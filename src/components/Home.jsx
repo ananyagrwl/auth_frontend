@@ -15,7 +15,6 @@ export default function Home() {
 
   const handlejwt = async ()=>{
     const data = await jwtverify(Cookies.get("token"));
-    console.log("jwt data", data);
     setUserData(data);
   }
 

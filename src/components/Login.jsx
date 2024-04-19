@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { jwtverify, login } from '../api/auth';
+import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -29,7 +29,6 @@ export default function Login() {
   }, [])
 
   const isValidEmail = (email) => {
-    // Regular expression for basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -43,24 +42,8 @@ export default function Login() {
     }
     else {
       const data = await login(email, password);
-      console.log("token from login",data.token);
-      console.log("data", data);
       if (data.data) {
         Cookies.set('token', data.token, { expires: 7 });
-        // const user = await jwtverify(Cookies.get('token'));
-        // if (user) {
-        //   Cookies.set('name', user.Name, { expires: 7 });
-        //   Cookies.set('email', user.Email, { expires: 7 });
-        //   Cookies.set('position', user.Position, { expires: 7 });
-        //   Cookies.set('department', user.Department, { expires: 7 });
-        //   Cookies.set('location', user.Location, { expires: 7 });
-        //   Cookies.set('age', user.Age, { expires: 7 });
-        //   navigate("/home");
-        // }
-        // else {
-        //   alert("Something went wrong");
-        //   navigate("/");
-        // }
         navigate("/home");
       }
       else {

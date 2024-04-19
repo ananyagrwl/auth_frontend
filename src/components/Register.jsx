@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { jwtverify, signup } from '../api/auth';
+import { signup } from '../api/auth';
 import Cookies from 'js-cookie';
 
 const defaultTheme = createTheme();
@@ -31,37 +31,14 @@ export default function Register({ params }) {
     }, [])
 
     const handleSubmit = async (e) => {
-        console.log(name, email, password, age, location, position, department);
         const data = await signup(name, email, password, age, location, position, department);
-        console.log(data);
         if (data.data) {
-            console.log(data.data);
             Cookies.set('token', data.token, { expires: 7 });
-            navigate("/home");
-            // if (user) {
-            //     Cookies.set('name', user.Name, { expires: 7 });
-            //     Cookies.set('email', user.Email, { expires: 7 });
-            //     Cookies.set('position', user.Position, { expires: 7 });
-            //     Cookies.set('department', user.Department, { expires: 7 });
-            //     Cookies.set('location', user.Location, { expires: 7 });
-            //     Cookies.set('age', user.Age, { expires: 7 });
-            //     navigate("/home");
-            // }
-            // else {
-            //     alert("Something went wrong at registering");
-            //     navigate("/");
-            // }
-            // Cookies.set('name', data.data.Name, { expires: 7 });
-            // Cookies.set('email', data.data.Email, { expires: 7 });
-            // Cookies.set('position', data.data.Position, { expires: 7 });
-            // Cookies.set('department', data.data.Department, { expires: 7 });
-            // Cookies.set('location', data.data.Location, { expires: 7 });
-            // Cookies.set('age', data.data.Age, { expires: 7 });            
+            navigate("/home");        
         }
         else {
             alert("Email already exists");
         }
-        // navigate("/home");
     }
 
     return (

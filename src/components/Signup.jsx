@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { signup, verifyotp } from '../api/auth';
+import { verifyotp } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -37,12 +37,11 @@ export default function Signup() {
             navigate("/register", { state: { name, email, password } });
         }
         else {
-            console.log("otp not match");
+            alert("otp not match");
         }
     };
 
     const isValidEmail = (email) => {
-        // Regular expression for basic email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
@@ -59,7 +58,6 @@ export default function Signup() {
             if (data.data.randomNumber) {
                 setMode(1);
                 setResOtp(data.data.randomNumber);
-                console.log("otp", data.data.randomNumber);
             }
             else {
                 alert("Email already in use");
