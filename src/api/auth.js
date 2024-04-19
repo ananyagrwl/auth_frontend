@@ -47,7 +47,7 @@ export const login = async (email, password) => {
 
 export const jwtverify = async (token) => {
     try {
-        const data = await axios.post(API + `fetch/${token}`);
+        const data = await axios.get(API + `fetch/${token}`);
         if (data) {
             console.log("jwtverify", data);
             return data.data;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,13 +6,25 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { jwtverify } from '../api/auth';
 
 export default function Home() {
 
   const navigate = useNavigate();
+  const [userData, setUserData] = useState("");
+
+  const handlejwt = async ()=>{
+    const data = await jwtverify(Cookies.get("token"));
+    console.log("jwt data", data);
+    setUserData(data);
+  }
+
   useEffect(() => {
     if (!Cookies.get("token")) {
       navigate("/")
+    }
+    else {
+      handlejwt();
     }
   })
 
@@ -30,22 +42,22 @@ export default function Home() {
             Welcome to Autho
           </Typography>
           <Typography variant="h5" sx={{ mt: 2 }}>
-            {Cookies.get('name')}
+            {userData.Name}
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            Email: {Cookies.get('email')}
+            Email: {userData.Email}
           </Typography>
           <Typography variant="body1">
-            Location: {Cookies.get('location')}
+            Location: {userData.Location}
           </Typography>
           <Typography variant="body1">
-            Position: {Cookies.get('position')}
+            Position: {userData.Position}
           </Typography>
           <Typography variant="body1">
-            Department: {Cookies.get('department')}
+            Department: {userData.Department}
           </Typography>
           <Typography variant="body1">
-            Age: {Cookies.get('age')}
+            Age: {userData.Age}
           </Typography>
         </CardContent>
       </Card>

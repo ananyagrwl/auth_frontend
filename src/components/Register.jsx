@@ -37,21 +37,20 @@ export default function Register({ params }) {
         if (data.data) {
             console.log(data.data);
             Cookies.set('token', data.token, { expires: 7 });
-            const user = await jwtverify(Cookies.get('token'));
-            console.log("user", user);
-            if (user) {
-                Cookies.set('name', user.Name, { expires: 7 });
-                Cookies.set('email', user.Email, { expires: 7 });
-                Cookies.set('position', user.Position, { expires: 7 });
-                Cookies.set('department', user.Department, { expires: 7 });
-                Cookies.set('location', user.Location, { expires: 7 });
-                Cookies.set('age', user.Age, { expires: 7 });
-                navigate("/home");
-            }
-            else {
-                alert("Something went wrong at registering");
-                navigate("/");
-            }
+            navigate("/home");
+            // if (user) {
+            //     Cookies.set('name', user.Name, { expires: 7 });
+            //     Cookies.set('email', user.Email, { expires: 7 });
+            //     Cookies.set('position', user.Position, { expires: 7 });
+            //     Cookies.set('department', user.Department, { expires: 7 });
+            //     Cookies.set('location', user.Location, { expires: 7 });
+            //     Cookies.set('age', user.Age, { expires: 7 });
+            //     navigate("/home");
+            // }
+            // else {
+            //     alert("Something went wrong at registering");
+            //     navigate("/");
+            // }
             // Cookies.set('name', data.data.Name, { expires: 7 });
             // Cookies.set('email', data.data.Email, { expires: 7 });
             // Cookies.set('position', data.data.Position, { expires: 7 });

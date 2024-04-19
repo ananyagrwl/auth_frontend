@@ -43,24 +43,25 @@ export default function Login() {
     }
     else {
       const data = await login(email, password);
-      console.log(data.token);
+      console.log("token from login",data.token);
       console.log("data", data);
       if (data.data) {
         Cookies.set('token', data.token, { expires: 7 });
-        const user = await jwtverify(Cookies.get('token'));
-        if (user) {
-          Cookies.set('name', user.Name, { expires: 7 });
-          Cookies.set('email', user.Email, { expires: 7 });
-          Cookies.set('position', user.Position, { expires: 7 });
-          Cookies.set('department', user.Department, { expires: 7 });
-          Cookies.set('location', user.Location, { expires: 7 });
-          Cookies.set('age', user.Age, { expires: 7 });
-          navigate("/home");
-        }
-        else {
-          alert("Something went wrong");
-          navigate("/");
-        }
+        // const user = await jwtverify(Cookies.get('token'));
+        // if (user) {
+        //   Cookies.set('name', user.Name, { expires: 7 });
+        //   Cookies.set('email', user.Email, { expires: 7 });
+        //   Cookies.set('position', user.Position, { expires: 7 });
+        //   Cookies.set('department', user.Department, { expires: 7 });
+        //   Cookies.set('location', user.Location, { expires: 7 });
+        //   Cookies.set('age', user.Age, { expires: 7 });
+        //   navigate("/home");
+        // }
+        // else {
+        //   alert("Something went wrong");
+        //   navigate("/");
+        // }
+        navigate("/home");
       }
       else {
         alert("EmailId or Password Incorrect!");
