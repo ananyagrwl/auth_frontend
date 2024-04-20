@@ -18,7 +18,7 @@ Autho is an authentication tool that facilitates user login through email verifi
 1. Clone the repository using the command: `git clone https://github.com/ananyagrwl/auth_frontend.git`
 2. Navigate to the project directory: `cd auth_frontend`
 3. Install dependencies: `npm install`
-4. Start the development `server: npm start`
+4. Start the development `npm start`
 
 ### Method 2: Deployment
 You can access the deployed version of the website directly via the following link: `https://auth-frontend-six.vercel.app/`
