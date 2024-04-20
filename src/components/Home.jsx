@@ -25,7 +25,7 @@ export default function Home() {
     else {
       handlejwt();
     }
-  })
+  },[])
 
   const handleLogout = ()=>{
     Cookies.remove("token");
