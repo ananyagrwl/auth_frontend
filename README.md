@@ -19,7 +19,7 @@ React Router Dom
 4. Start the development `server: npm start`
 
 ### Method 2: Deployment
-You can access the deployed version of the website directly via the following link: Deployed Autho Website
+You can access the deployed version of the website directly via the following link: [https://auth-frontend-six.vercel.app/](Deployed Website Link)
 
 
 ## Footer
