@@ -7,7 +7,7 @@ Autho is an authentication tool that facilitates user login through email verifi
 <ul>
   <li>React.js</li>
   <li>Js-Cookie</li>
-  <li>>Material UI</li>
+  <li>Material UI</li>
   <li>Tailwind</li>
   <li>Axios </li>
   <li>React Router Dom</li>
