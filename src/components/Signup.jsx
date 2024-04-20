@@ -56,6 +56,7 @@ export default function Signup() {
         else {
             const data = await verifyotp(email);
             if (data.data.randomNumber) {
+                alert("Email sent!, Click OK to continue...");
                 setMode(1);
                 setResOtp(data.data.randomNumber);
             }
